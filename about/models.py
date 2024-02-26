@@ -1,8 +1,10 @@
 from django.db import models
 from cloudinary.models import CloudinaryField
 
-# Create your models here.
 class About(models.Model):
+    """
+    Stores information about the site owner.
+    """
     title = models.CharField(max_length=200)
     profile_image = CloudinaryField('image', default='placeholder')
     updated_on = models.DateTimeField(auto_now=True)
@@ -12,6 +14,9 @@ class About(models.Model):
         return f"{self.title}"
 
 class CollaborateRequest(models.Model):
+    """
+    Stores a request from a site user to collaborate with the site owner.
+    """
     name = models.CharField(max_length=200)
     email = models.EmailField()
     message = models.TextField()
