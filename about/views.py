@@ -4,6 +4,8 @@ from .models import About
 from .forms import CollaborateForm
 
 # Create your views here.
+
+
 def about_display(request):
     """
     Renders the most recent information on the website author
@@ -16,7 +18,7 @@ def about_display(request):
         The most recent instance of :model:`about.About`.
         ``collaborate_form``
             An instance of :form:`about.CollaborateForm`.
-    
+
     **Template**
     :template:`about/about.html`
     """
@@ -27,7 +29,7 @@ def about_display(request):
         if collaborate_form.is_valid():
             collaboration = collaborate_form.save()
             messages.add_message(
-                request, messages.SUCCESS, 
+                request, messages.SUCCESS,
                 "Collaboration request received! I endeavour to respond within 2 working days."
             )
 
@@ -37,5 +39,6 @@ def about_display(request):
         request,
         "about/about.html",
         {"about": about,
-        "collaborate_form": collaborate_form,},
+            "collaborate_form": collaborate_form,
+        },
     )
