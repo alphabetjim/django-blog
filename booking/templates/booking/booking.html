@@ -4,10 +4,21 @@
 {% block content %}
 
   <h1>Appointments list</h1>
+  <p> {{ appointments|length }}</p>
   {% for appt in appointments %}
+  <!-- {% if user.is_superuser %} -->
   <h2>{{appt.user}}</h2>
   <p>{{ appt.day }} | {{ appt.time }}</p>
   <p>Created on: {{appt.created_on}}</p>
+  <!-- {% else %}
+  {% if appt.user == user %}
+  <p>You have {{user.appts}} appointments booked</p>
+  <h2>{{appt.user}}</h2>
+  <p>{{ appt.day }} | {{ appt.time }}</p>
+  <p>Created on: {{appt.created_on}}</p>
+  {% endif %} -->
+  <!-- {% endif %} -->
+
   {% endfor %}
 
 {% endblock content %}

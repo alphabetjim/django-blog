@@ -19,7 +19,7 @@ class Appointment(models.Model):
     """
     Stores a single appointment, related to User.
     """
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, related_name="appts")
     day = models.DateField(default=datetime.now)
     time = models.CharField(max_length=10, choices=TIME_CHOICES, default="3 PM")
     created_on = models.DateTimeField(auto_now_add=True)
