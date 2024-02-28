@@ -2,23 +2,21 @@
 {% load static %}
 
 {% block content %}
+<!-- Booking page content begins here -->
 
   <h1>Appointments list</h1>
-  <p> {{ appointments|length }}</p>
-  {% for appt in appointments %}
-  <!-- {% if user.is_superuser %} -->
-  <h2>{{appt.user}}</h2>
-  <p>{{ appt.day }} | {{ appt.time }}</p>
-  <p>Created on: {{appt.created_on}}</p>
-  <!-- {% else %}
-  {% if appt.user == user %}
-  <p>You have {{user.appts}} appointments booked</p>
-  <h2>{{appt.user}}</h2>
-  <p>{{ appt.day }} | {{ appt.time }}</p>
-  <p>Created on: {{appt.created_on}}</p>
-  {% endif %} -->
-  <!-- {% endif %} -->
+  <!-- Test length of appointments collection: display appointment or loop -->
+  {% if appointments|length == 1 %}
+  <h2>{{ user }}</h2>
+  <p>{{ appointments.0.day }} | {{ appointments.0.time }}</p>
+  <p>Created on: {{appointments.0.created_on}}</p>
+  {% else %}
+  {% for appointment in appointments %}
+  <h2>{{ appointment.user }}</h2>
+  <p>{{ appointment.day }} | {{ appointment.time }}</p>
+  <p>Created on: {{appointment.created_on}}</p>
+    {% endfor %}
+  {% endif %}
 
-  {% endfor %}
-
+  <!-- Booking page content ends here -->
 {% endblock content %}
