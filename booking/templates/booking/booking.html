@@ -1,20 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
+{% load static %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Views Part 1</title>
-</head>
+{% block content %}
 
-<body>
-    <h1>Appointments list</h1>
-    {% for appt in appointments %}
-    <h2>{{appt.user}}</h2>
-    <p>{{ appt.day }} | {{ appt.time }}</p>
-    <p>Created on: {{appt.created_on}}</p>
-    {% endfor %}
-</body>
+  <h1>Appointments list</h1>
+  {% for appt in appointments %}
+  <h2>{{appt.user}}</h2>
+  <p>{{ appt.day }} | {{ appt.time }}</p>
+  <p>Created on: {{appt.created_on}}</p>
+  {% endfor %}
 
-</html>
+{% endblock content %}
