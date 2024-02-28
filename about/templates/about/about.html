@@ -32,6 +32,7 @@
                 an article, or simply want to brainstorm some ideas,
                 I'm excited to hear from you. Fill out the form
                 and we can get the ball rolling!</p>
+                
 
             <!-- add your form here. Your submit button should 
                                 have the classes of btn, btn-secondary -->
@@ -40,6 +41,11 @@
                 {% csrf_token %}
                 <button class="btn btn-secondary" type="submit">Submit</button>   
             </form>
+        </div>
+        <div class="col-12 col-md-6 my-5">
+            <h2>Prefer face-to-face?</h2>
+            <p>Sometimes it can be easier to talk these things through.</p>
+            <a href="../booking/booking_form">Book a call!</a>
         </div>
     </div>
 </div>

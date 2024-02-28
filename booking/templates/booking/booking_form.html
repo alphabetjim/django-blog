@@ -1,0 +1,14 @@
+{% extends 'base.html' %} {% block content %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+<h2> Book a call </h2>
+<p> Use the form below to book a 30-minute video call. </p>
+
+<form method="post">
+    {{ booking_form | crispy }}
+    {% csrf_token %}
+    <button class="btn btn-secondary" type="submit">Submit</button>   
+</form>
+
+{% endblock content %}

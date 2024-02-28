@@ -3,6 +3,7 @@ from django.views import generic
 from django.http import HttpResponseRedirect
 from datetime import datetime, timedelta
 from .models import Appointment
+from .forms import BookingForm
 from django.contrib import messages
 from django.db.models import Q
 
@@ -23,7 +24,25 @@ def AppointmentList(request):
         },
     )
 
-# def Appointment_page(request):
-#     """
-#     Returns 
-#     """
+def booking_form(request):
+    """
+    Display booking form to instantiate appointment
+    """
+    print(request.user)
+    if request.method == "POST":
+        form = BookingForm(data=request.POST,user=request.user)
+        if form.is_valid():
+            form.user = request.user
+            form.save()
+            return redirect(AppointmentList)
+    else:
+        form = BookingForm(user=request.user)
+    
+    return render(
+        request,
+        "booking/booking_form.html",
+        {
+            "booking_form": form,
+        }
+    )
+    

@@ -7,10 +7,12 @@
   <h1>Appointments list</h1>
   <!-- Test length of appointments collection: display appointment or loop -->
   {% if appointments|length == 1 %}
+  <!-- Single appointment  -->
   <h2>{{ user }}</h2>
   <p>{{ appointments.0.day }} | {{ appointments.0.time }}</p>
   <p>Created on: {{appointments.0.created_on}}</p>
   {% else %}
+  <!-- Multiple appointments -->
   {% for appointment in appointments %}
   <h2>{{ appointment.user }}</h2>
   <p>{{ appointment.day }} | {{ appointment.time }}</p>
