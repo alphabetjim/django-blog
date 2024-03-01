@@ -7,6 +7,14 @@ from .forms import BookingForm
 from django.contrib import messages
 from django.db.models import Q
 
+# functions
+# from example
+def dayToWeekday(x):
+    z = datetime.strptime(x, "%Y-%m-%d")
+    y = z.strftime('%A')
+    return y
+
+
 def AppointmentList(request):
     """
     Simply displays all appointments
@@ -15,8 +23,18 @@ def AppointmentList(request):
         appointments = Appointment.objects.all()
     else:
         appointments = Appointment.objects.all().filter(Q(user_id = request.user.id)).values()
-    print(len(appointments))
-    print(request.user.id)
+    for appointment in appointments:
+        #print(dayToWeekday(appointment['day']))
+        field_name = 'day'
+        # field_value = getattr(appointment, field_name)
+        # print(field_value)
+        print(appointment)
+        for field in appointment:
+            print(field)
+            if field == 'day':
+                print(appointment[field])
+                #print(dayToWeekday(appointment[field]))
+                #print(appointment[field].strftime('%A'))
     return render(
         request,
         "booking/booking.html",
