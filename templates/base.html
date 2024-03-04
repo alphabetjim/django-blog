@@ -7,6 +7,7 @@
 {% url 'account_logout' as logout_url %}
 {% url 'booking' as booking_url %}
 {% url 'messages' as messaging_url %}
+{% url 'view_profile' as profile_url %}
 
 <!DOCTYPE html>
 <html class="h-100" lang="en">
@@ -54,6 +55,9 @@
                             href="{% url 'about' %}">About</a>
                     </li>
                     {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == profile_url %}active" aria-current="page{% endif %}" href="{% url 'view_profile' %}">Profile</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == booking_url %}active" aria-current="page{% endif %}" href="{% url 'booking' %}">My Bookings</a>
                     </li>

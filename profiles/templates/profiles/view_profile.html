@@ -1,0 +1,25 @@
+{% extends 'base.html' %} {% block content %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+        {% if has_profile %}
+        <h1>{{ profile.firstname}} {{ profile.lastname }}</h1>
+        <h2> {{ profile.username }} </h2>
+        <h3>Bio:</h3>
+        <p>{{ profile.bio }}</p>
+        <h2>Need to make an edit?</h2>
+        {% else %}
+        <h1>Create your profile</h1>
+        (% endif %}
+        <form id="profileForm" method="post"
+        style="margin-top: 1.3em;">
+        {{ profile_form | crispy }}
+        {% csrf_token %}
+        <button id="submitButton" type="submit"
+            class="btn btn-signup btn-lg">Submit</button>
+        </form>
+
+
+
+{% endblock content %}
