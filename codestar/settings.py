@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'about',
     'booking',
     'messaging',
+    'profiles',
 ]
 SITE_ID = 1
 LOGIN_REDIRECT_URL = '/'
