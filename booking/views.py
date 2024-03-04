@@ -23,18 +23,18 @@ def AppointmentList(request):
         appointments = Appointment.objects.all()
     else:
         appointments = Appointment.objects.all().filter(Q(user_id = request.user.id)).values()
-    for appointment in appointments:
-        #print(dayToWeekday(appointment['day']))
-        field_name = 'day'
-        # field_value = getattr(appointment, field_name)
-        # print(field_value)
-        print(appointment)
-        for field in appointment:
-            print(field)
-            if field == 'day':
-                print(appointment[field])
-                #print(dayToWeekday(appointment[field]))
-                #print(appointment[field].strftime('%A'))
+    # for appointment in appointments:
+    #     #print(dayToWeekday(appointment['day']))
+    #     field_name = 'day'
+    #     # field_value = getattr(appointment, field_name)
+    #     # print(field_value)
+    #     print(appointment)
+    #     for field in appointment:
+    #         print(field)
+    #         if field == 'day':
+    #             print(appointment[field])
+    #             #print(dayToWeekday(appointment[field]))
+    #             #print(appointment[field].strftime('%A'))
     return render(
         request,
         "booking/booking.html",

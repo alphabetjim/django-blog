@@ -1,10 +1,10 @@
 <h1>Messages</h1>
+{% url 'message_detail' as message_detail %}
 
 {% for message in messages %}
     <div class="message">
-        <!-- <a href="{% url 'message_detail' pk=message.pk %}"> -->
-        <a href="{% url 'message_detail' %}">
-            {{ message.subject }} from {{ message.sender.name }}
+        <a href="{% url 'message_detail' pk=message.id %}">
+            {{ message.subject }} from {{ message.sender }}
         </a>
     </div>
 {% endfor %}

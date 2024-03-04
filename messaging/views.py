@@ -3,6 +3,8 @@ from .models import Message
 
 def message_list(request):
     messages = Message.objects.all()
+    for message in messages:
+        print(message)
     return render(request, 'messaging/message_list.html', {'messages': messages})
 
 def message_detail(request, pk):
