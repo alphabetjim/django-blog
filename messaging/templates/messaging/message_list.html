@@ -1,4 +1,7 @@
 {% extends 'base.html' %} {% block content %}
+{% load static %}
+{% load crispy_forms_tags %}
+
 {% with n_messages=messages|length %}
 
 <h1>Messages</h1>
@@ -16,5 +19,19 @@
 {% endfor %}
 
 {% endwith %}
+    <!-- Creating New Messages -->
+    <div class="col-md-4 card mb-4 mt-3">
+        <div class="card-body">
+            <h3>Write a message:</h3>
+            <p>Writing as: {{ user.username }}</p>
+            <form id="messageForm" method="post"
+            style="margin-top: 1.3em;">
+            {{ message_form | crispy }}
+            {% csrf_token %}
+            <button id="submitButton" type="submit"
+                class="btn btn-signup btn-lg">Submit</button>
+            </form>
+        </div>
+    </div>
 
 {% endblock content %}
