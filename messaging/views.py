@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from .models import Message
 
 def message_list(request):
-    messages = Message.objects.all()
+    messages = Message.objects.all().filter(receiver = request.user)
     for message in messages:
         print(message)
     return render(request, 'messaging/message_list.html', {'messages': messages})

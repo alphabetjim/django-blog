@@ -1,6 +1,8 @@
 <h1>Messages</h1>
 {% url 'message_detail' as message_detail %}
 
+<h3>Hi {{ user}}, you have {{ messages|length}} messages!</h3>
+
 {% for message in messages %}
     <div class="message">
         <a href="{% url 'message_detail' pk=message.id %}">
