@@ -1,7 +1,11 @@
+{% extends 'base.html' %} {% block content %}
+{% with n_messages=messages|length %}
+
 <h1>Messages</h1>
 {% url 'message_detail' as message_detail %}
 
-<h3>Hi {{ user}}, you have {{ messages|length}} messages!</h3>
+<h2>Hi {{ user}}, you have {% if n_messages == '0' %}no{% else %}{{ n_messages}} messages!{% endif %}</h2>
+<h3></h3>
 
 {% for message in messages %}
     <div class="message">
@@ -10,3 +14,7 @@
         </a>
     </div>
 {% endfor %}
+
+{% endwith %}
+
+{% endblock content %}
